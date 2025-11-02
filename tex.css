@@ -312,15 +312,12 @@ body, button, a {
 }
 
 
-@media (max-width: 100px) {
-  .main{
-    margin-left: 20px;
-    margin-right: 20px;
+@media (max-width: 600px) {
+  main{
+
 
   }
 }
-
-
 
 
 @media (max-width: 500px) {
