@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <!-- Для iPhone / iPad -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="description" content="Команда VerdeBoost — создаём сайты, дизайн и интерфейсы с зелёной энергией." />
+  <meta name="theme-color" content="#112616">
+  <title>IT-Technology</title>
+  <link rel="icon" href="image/it.png" type="image/png">
+  <link rel="stylesheet" href="tex.css?v=2">
+  <!-- Цвет статус-бара на Android -->
+
+  <style>
+    /* :root{
+      --bg1:#031b0f;--bg2:#072f1a;--accent:#28e07f;--accent2:#00b76b;--muted:rgba(255,255,255,0.75);--card:rgba(255,255,255,0.04);--radius:14px;--mono:'Fira Code',monospace;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+    font-family:'Inter',sans-serif;color:#eaffea;background:linear-gradient(180deg,var(--bg1),var(--bg2));min-height:100vh;overflow-x:hidden;display:flex;flex-direction:column;align-items:center;scroll-behavior:smooth;}
+    header{width:100%;max-width:800px;display:flex;justify-content:center;align-items:center;padding:5px 105px;background:rgba(255,255,255,0.03);border-radius: 0 0 50px 50px;background:rgba(255,255,255,0.05);backdrop-filter:blur(6px);position:sticky;top:0;z-index:10;}
+    .logo{font-size:20px;font-weight:800;color:var(--accent)}
+    nav a{color:#eaffea;text-decoration:none;margin-left:18px;opacity:.8;transition:.2s}
+    nav a:hover{color:var(--accent);opacity:1}
+    
+
+
+
+body { cursor: none; } /* скрываем стандартный курсор */
+
+
+
+     /* main{max-width:1100px;width:150%;padding:40px 150px;display:flex;flex-direction:column;gap:80px} */
+
+/* main {
+  max-width: 1100px;
+  width: 150%;          /* вот это убивает адаптивность */
+  /* padding: 40px 150px;  огромные отступы слева/справа */
+  /* display:flex;
+  flex-direction:column;
+  gap:80px;
+}  */
+
+
+
+
+/* 
+
+
+    .hero{text-align:center;}
+    .hero h1{font-size:44px;line-height:1.2;margin-bottom:12px;}
+    .hero p{font-size:18px;color:var(--muted)}
+
+    .terminal{background:#01140b;border-radius:16px;padding:20px;font-family:var(--mono);color:var(--accent);font-size:15px;line-height:1.5;box-shadow:inset 0 0 40px rgba(0,0,0,0.6),0 8px 30px rgba(0,0,0,0.6);position:relative;margin-top:40px}
+    .term-header{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+    .dot{width:12px;height:12px;border-radius:50%;}
+    .dot.red{background:#ff5f56}.dot.yellow{background:#ffbd2e}.dot.green{background:#27c93f}
+    .code-output{white-space:pre-wrap;min-height:160px}
+    .cursor{display:none;width:10px;height:18px;background:var(--accent);margin-left:4px;animation:blink 1s steps(2) infinite;border-radius:2px;vertical-align:middle}
+    @keyframes blink{50%{opacity:0}}
+    .term-controls{margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .btn{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#042514;border:none;padding:10px 16px;border-radius:10px;font-weight:600;cursor:pointer;transition:.3s}
+    .btn:hover{opacity:.9;transform:scale(1.03)}
+
+    section{display:flex;flex-direction:column;gap:16px}
+    h2{color:var(--accent);font-size:32px}
+    p{color:var(--muted);font-size:17px;line-height:1.6}
+    .grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .card{background:var(--card);padding:22px;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.05);transition:.3s}
+    .card:hover{transform:translateY(-6px);box-shadow:0 6px 20px rgba(0,0,0,0.5)}
+
+    footer{text-align:center;padding:30px 0;color:var(--muted);font-size:14px;margin-top:30px;border-top:1px solid rgba(255,255,255,0.05)}
+ */ */
+
+
+  </style>
+</head>
+<body>
+<canvas id="matrixLeft"></canvas>
+<canvas id="matrixRight"></canvas>
+  <header>
+    <div class="logo">
+        <img src="image/it.png" alt="logo" width="100px"oncontextmenu="return false;"   >    
+    </div>
+    
+    <!-- <nav>
+      <a href="#about">О нас</a>
+      <a href="#services">Услуги</a>
+      <a href="#features">Фишки</a>
+      <a href="#contact">Контакты</a>
+    </nav> -->
+  </header>
+  <main>
+    <div class="hero">
+      <h1 id="heroTitle">Создаём сайты, которые живут и дышат кодом</h1>
+      <p id="heroText">Мы-команда разработчиков и дизайнеров. Делаем сайты, визитки, брендинг, интерфейсы и всё, что помогает бизнесу быть ярче. Каждый пиксель и строка кода - с душой и логикой.</p>
+
+      <div class="terminal">
+        <div class="term-header">
+          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+        </div>
+        <div class="code-output" id="codeOutput">// Нажмите Play для информации...</div>
+        <div class="term-controls">
+          <button class="btn" id="playBtn">▶ Play</button>
+          <button class="btn" id="nextBtn">Again</button>
+        </div>
+      </div>
+    </div>
+  
+<div data-aos="fade-up"></div>
+
+    <section id="about">
+      <h2>О нас</h2>
+      <p>Мы не просто делаем сайты - мы проектируем цифровые эмоции. Для нас важно, чтобы каждая страница была не только быстрой, но и вдохновляющей. Мы объединяем эстетику и технологичность, чтобы ваш проект выделялся.</p>
+    </section>
+
+    <section id="services">
+      <h2>Что мы делаем</h2>
+      <div class="grid">
+        <div class="card"><h3>Разработка</h3><p>Сайты, лендинги, визитки, панели управления. Чистый код, адаптивность и скорость.</p></div>
+        <div class="card"><h3>Дизайн</h3><p>Фирменный стиль, интерфейсы, UX/UI. Современно и в вашем стиле.</p></div>
+        <div class="card"><h3>Карточки и презентации</h3><p>Делаем карточки продуктов, баннеры, лендинги для рекламы и соцсетей.</p></div>
+        <div class="card"><h3>Создание сайтов</h3><p>Делаем красивые и удобные сайты, доступные для клиентов в любой точке планеты.</p></div>
+      </div>
+    </section>
+
+    <section id="features">
+      <h2>Наши фишки</h2>
+      <div class="grid">
+        <div class="card"><h3>Анимации</h3><p>Плавные переходы, hover-эффекты, интерактивные элементы.</p></div>
+        <div class="card"><h3>Зелёная энергия</h3><p>Вся стилистика направлена на экологичность и свежесть визуала.</p></div>
+        <div class="card"><h3>Типографика</h3><p>Читаемый шрифт, правильные акценты, гармония текста и пространства.</p></div>
+        <div class="card"><h3>Печатающийся код</h3><p>Интерактивный блок с кодом, создающий атмосферу технологий и живого процесса.</p></div>
+        <div class="card"><h3>Адаптивность</h3><p>Телефон, планшет, десктоп-сайт выглядит шикарно на любом устройстве.</p></div>
+        <div class="card"><h3>Быстрая загрузка</h3><p>Никаких лишних библиотек-минимализм и скорость.</p></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Контакты</h2>
+      <p>Пишите, звоните или оставляйте заявку-вместе создадим что-то зелёное и живое.</p>
+      <p><strong>Email:</strong> egor.riznykhh@gmail.com<br><strong>Telegram:</strong> @m_maximovv</p>
+    </section>
+  </main>
+    <a href="https://t.me/m_maximovv" target="_blank" rel="noopener noreferrer"   class="veb-tel">
+      Написать
+    </a>
+  <footer>© <span id="year"></span> IT_Technology_Pmr.</footer>
+  <style>
+/* .grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+
+/* начало печати текста эффект */
+/* #heroTitle {
+  font-size: 44px;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  font-family: 'Fira Code', monospace;
+  white-space: pre-wrap;
+  display: inline-block;
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 24px;
+  background: var(--accent);
+  margin-left: 4px;
+  animation: blink 1s steps(2) infinite;
+  border-radius: 22px;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+} */
+
+/* конец печати текста */
+
+
+/* .card {
+  background: var(--card);
+  padding: 22px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.05);
+  opacity: 0;                /* изначально невидимо */
+  /* transform: translateX(-30px) translateY(30px); смещаем по диагонали */
+  /* transition: opacity 0.6s ease-out, transform 0.6s ease-out; */
+/* } */
+
+/* .grid.show .card {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+} */ 
+
+/* Чтобы каждая карточка появлялась с задержкой */
+/* .grid.show .card:nth-child(1) { transition-delay: 0.1s; }
+.grid.show .card:nth-child(2) { transition-delay: 0.2s; }
+.grid.show .card:nth-child(3) { transition-delay: 0.3s; }
+.grid.show .card:nth-child(4) { transition-delay: 0.4s; } */
+/* и так далее для всех карточек */ */
+
+  </style>
+  
+
+  <script>
+
+
+
+
+
+// // появление гридов плавное
+// const grids = document.querySelectorAll('.grid');
+
+// const observer = new IntersectionObserver((entries) => {
+//   entries.forEach(entry => {
+//     if(entry.isIntersecting) {
+//       entry.target.classList.add('show');
+//     } else {
+//       entry.target.classList.remove('show');
+//     }
+//   });
+// }, { threshold: 0.3 });
+
+// grids.forEach(grid => observer.observe(grid));
+// // конец гридов
+// // 🌿 Эффект кода "Матрицы" по бокам
+// function createMatrix(canvasId, side = 'left') {
+//   const canvas = document.getElementById(canvasId);
+//   const ctx = canvas.getContext('2d');
+
+//   function resize() {
+//     canvas.width = window.innerWidth * 0.15; // ширина боковой части
+//     canvas.height = window.innerHeight;
+//   }
+//   resize();
+
+//   const letters = '01<>[]{}#%&@ΣΛΩπΔ≡+';
+//   const fontSize = 14;
+//   const columns = Math.floor(canvas.width / fontSize);
+//   const drops = Array(columns).fill(1);
+
+//   function draw() {
+//     ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+//     ctx.fillRect(0, 0, canvas.width, canvas.height);
+//     ctx.fillStyle = '#00ff99';
+//     ctx.font = fontSize + 'px monospace';
+
+//     for (let i = 0; i < drops.length; i++) {
+//       const text = letters.charAt(Math.floor(Math.random() * letters.length));
+//       ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+//       if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+//         drops[i] = 0;
+//       }
+//       drops[i]++;
+//     }
+//   }
+//   setInterval(draw, 40);
+//   window.addEventListener('resize', resize);
+// }
+
+// if (window.innerWidth <= 500) {
+//     // Отключаем определённые функции
+//     myFunction = function() { /* пусто */ };
+//     anotherFunction = function() {};
+// }
+
+
+// createMatrix('matrixLeft');
+// createMatrix('matrixRight');
+
+
+
+
+
+
+
+
+
+
+//     document.getElementById('year').textContent=new Date().getFullYear();
+
+//     const codeOutput=document.getElementById('codeOutput');
+//     const playBtn=document.getElementById('playBtn');
+//     const nextBtn=document.getElementById('nextBtn');
+
+//     const snippets=[
+//       `// Запуск системы...\nПодключение к серверу...{\n <p>'Привет! Мы-команда программистов';\n\Создаём современные сайты, стильные дизайны и мощные веб-проекты.\n\Стоимость начинается от 100$. Свяжись с нами - и твой проект оживёт.</p>`,
+//       `// Стиль через код\nconst theme = {color:'green', glow:true};\nconsole.log('Design power', theme);`,
+//       `// Мы любим JavaScript\nlet magic = 'creative code';\nconsole.log('VerdeBoost →', magic);`
+//     ];
+//     let i=0,idx=0,timer=null;
+
+//     function typeStep(){
+//       if(idx>=snippets[i].length){clearInterval(timer);timer=null;return;}
+//       codeOutput.innerHTML=snippets[i].slice(0,idx+1).replace(/</g,'&lt;').replace(/>/g,'&gt;')+ '<span class="cursor"></span>';
+//       idx++;
+//     }
+
+//     playBtn.addEventListener('click',()=>{
+//       if(timer) return;
+//       idx=0;codeOutput.textContent='';
+//       timer=setInterval(typeStep,60);
+//     });
+
+//     nextBtn.addEventListener('click',()=>{
+//       i=(i+1)%snippets.length;
+//       idx=0;codeOutput.textContent='';
+//       if(timer){clearInterval(timer);timer=null;}
+//     });
+
+
+
+
+
+
+
+
+
+
+  </script>
+  <script src="tex.js"></script>
+</body>
+</html>

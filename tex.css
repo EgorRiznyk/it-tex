@@ -1,0 +1,392 @@
+/* Фон по бокам */
+#matrixLeft, #matrixRight {
+  position: fixed;
+  top: 0;
+  width: 15vw; /* ширина боковой анимации */
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}
+
+#matrixLeft {
+  left: 0;
+  background: radial-gradient(circle at right, rgba(0, 255, 153, 0.05), #000);
+}
+#matrixRight {
+  right: 0;
+  background: radial-gradient(circle at left, rgba(0, 255, 153, 0.05), #000);
+}
+
+/* Центр страницы остаётся чистым */
+main, .content {
+  margin: 0 auto;
+  max-width: 900px;
+  position: relative;
+  z-index: 2;
+}
+
+
+ :root{
+      --bg1:#031b0f;--bg2:#072f1a;--accent:#28e07f;--accent2:#00b76b;--muted:rgba(255,255,255,0.75);--card:rgba(255,255,255,0.04);--radius:14px;--mono:'Fira Code',monospace;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+    font-family:'Inter',sans-serif;color:#eaffea;background:linear-gradient(180deg,var(--bg1),var(--bg2));min-height:100vh;overflow-x:hidden;display:flex;flex-direction:column;align-items:center;scroll-behavior:smooth;}
+    header{width:100%;max-width:800px;display:flex;justify-content:center;align-items:center;padding:5px 105px;background:rgba(255,255,255,0.03);border-radius: 0 0 50px 50px;background:rgba(255,255,255,0.05);backdrop-filter:blur(6px);position:sticky;top:0;z-index:10;}
+    .logo{font-size:20px;font-weight:800;color:var(--accent)}
+    nav a{color:#eaffea;text-decoration:none;margin-left:18px;opacity:.8;transition:.2s}
+    nav a:hover{color:var(--accent);opacity:1}
+    
+
+
+
+body { cursor: none; } /* скрываем стандартный курсор */
+
+
+
+     /* main{max-width:1100px;width:150%;padding:40px 150px;display:flex;flex-direction:column;gap:80px} */
+
+main {
+  max-width: 1100px;
+  width: 150%;          /* вот это убивает адаптивность */
+  padding: 40px 150px;  /* огромные отступы слева/справа */
+  display:flex;
+  flex-direction:column;
+  gap:80px;
+}
+
+
+.grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+
+/* начало печати текста эффект */
+#heroTitle {
+  font-size: 44px;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  font-family: 'Fira Code', monospace;
+  white-space: pre-wrap;
+  display: inline-block;
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 24px;
+  background: var(--accent);
+  margin-left: 4px;
+  animation: blink 1s steps(2) infinite;
+  border-radius: 22px;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* конец печати текста */
+
+
+.card {
+  background: var(--card);
+  padding: 22px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.05);
+  opacity: 0;                /* изначально невидимо */
+  transform: translateX(-30px) translateY(30px); /* смещаем по диагонали */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.grid.show .card {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+}
+
+/* Чтобы каждая карточка появлялась с задержкой */
+.grid.show .card:nth-child(1) { transition-delay: 0.1s; }
+.grid.show .card:nth-child(2) { transition-delay: 0.2s; }
+.grid.show .card:nth-child(3) { transition-delay: 0.3s; }
+.grid.show .card:nth-child(4) { transition-delay: 0.4s; }
+/* и так далее для всех карточек */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .hero{text-align:center;}
+    .hero h1{font-size:44px;line-height:1.2;margin-bottom:12px;}
+    .hero p{font-size:18px;color:var(--muted)}
+
+    .terminal{background:#01140b;border-radius:16px;padding:20px;font-family:var(--mono);color:var(--accent);font-size:15px;line-height:1.5;box-shadow:inset 0 0 40px rgba(0,0,0,0.6),0 8px 30px rgba(0,0,0,0.6);position:relative;margin-top:40px}
+    .term-header{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+    .dot{width:12px;height:12px;border-radius:50%;}
+    .dot.red{background:#ff5f56}.dot.yellow{background:#ffbd2e}.dot.green{background:#27c93f}
+    .code-output{white-space:pre-wrap;min-height:160px}
+    .cursor{display:none;width:10px;height:18px;background:var(--accent);margin-left:4px;animation:blink 1s steps(2) infinite;border-radius:2px;vertical-align:middle}
+    @keyframes blink{50%{opacity:0}}
+    .term-controls{margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .btn{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#042514;border:none;padding:10px 16px;border-radius:10px;font-weight:600;cursor:pointer;transition:.3s}
+    .btn:hover{opacity:.9;transform:scale(1.03)}
+
+    section{display:flex;flex-direction:column;gap:16px}
+    h2{color:var(--accent);font-size:32px}
+    p{color:var(--muted);font-size:17px;line-height:1.6}
+    .grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .card{background:var(--card);padding:22px;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.05);transition:.3s}
+    .card:hover{transform:translateY(-6px);box-shadow:0 6px 20px rgba(0,0,0,0.5)}
+
+    footer{text-align:center;padding:30px 0;color:var(--muted);font-size:14px;margin-top:30px;border-top:1px solid rgba(255,255,255,0.05)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------- Программный кастомный курсор (стили) ---------- */
+body { cursor: none; } /* скрываем системный курсор (скрывается JS при необходимости) */
+
+.prog-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 99999;
+  will-change: transform, opacity;
+  transition: opacity 180ms linear;
+  opacity: 1;
+  font-family: 'Fira Code', monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* обычный режим — маленькие фигурные скобки */
+.prog-cursor--code {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(40,224,127,0.12), rgba(0,183,107,0.08));
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45), 0 0 16px rgba(40,224,127,0.06) inset;
+  color: var(--accent, #28e07f);
+  font-size: 16px;
+  font-weight: 700;
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(40,224,127,0.12);
+}
+
+/* режим редактора / терминала — вертикальный мигающий бар */
+.prog-cursor--term {
+  width: 10px;
+  height: 26px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #28e07f, #00b76b);
+  box-shadow: 0 0 14px rgba(40,224,127,0.6);
+  animation: prog-blink 1s steps(2) infinite;
+}
+
+/* маленький текст внутри (для скобок) */
+.prog-cursor--code .inner {
+  transform: translateY(-1px);
+}
+
+/* скрыть при необходимости (например над инпутом) */
+.prog-cursor.hidden { opacity: 0; pointer-events: none; }
+
+/* анимация мигания для курсора-терминала */
+@keyframes prog-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* если надо — можно скорректировать стиль когда курсор над .terminal (fallback) */
+.terminal.hovered { box-shadow: 0 12px 40px rgba(0,0,0,0.6); }
+
+
+
+
+
+
+/* Скрываем системный курсор вообще */
+body, button, a {
+  cursor: none !important;
+}
+
+/* кнопка написать */
+
+.veb-tel {
+  display: inline-block;
+  padding: 16px 36px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #00ff99;
+  text-decoration: none;
+  background: linear-gradient(90deg, rgba(0,255,153,0.1), rgba(0,183,107,0.1));
+  border: 2px solid #00ff99;
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 10px #00ff99, 0 0 20px #00ff99, 0 0 30px rgba(0,255,153,0.5);
+}
+
+.veb-tel::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0,255,153,0.2) 0%, transparent 70%);
+  animation: glow 2.5s linear infinite;
+  z-index: 0;
+}
+
+.veb-tel span {
+  position: relative;
+  z-index: 1;
+}
+
+.veb-tel:hover {
+  color: #fff;
+  background: linear-gradient(90deg, #28e07f, #00b76b);
+  box-shadow: 0 0 20px #00ff99, 0 0 40px #00ff99, 0 0 60px rgba(0,255,153,0.6);
+  transform: scale(1.1);
+}
+
+@keyframes glow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ~конец кнопки */
+
+
+.card {
+  background: rgba(0,255,150,0.05);
+  border: 1px solid #00ff9d30;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px #00ff9d15;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px #00ff9d50;
+}
+
+
+@media (max-width: 100px) {
+  .main{
+    margin-left: 20px;
+    margin-right: 20px;
+
+  }
+}
+
+
+
+
+@media (max-width: 500px) {
+  body {
+    overflow-x: hidden; /* запрещаем горизонтальный скролл */
+  }
+
+  main {
+    width: 100%;
+    padding: 20px;
+    gap: 30px;
+  }
+
+
+
+  .grid {
+    grid-template-columns: 1fr; /* карточки в одну колонку */
+    gap: 15px;
+  }
+
+  .card {
+    width: 100%; /* карточка не вылезает за экран */
+    padding: 16px;
+    box-shadow: 0 0 12px #00ff9d15;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  /* отключаем боковые matrix на телефоне */
+  #matrixLeft, #matrixRight {
+    display: none;
+  }
+
+  /* кнопка писать меньше, чтобы помещалась */
+  .veb-tel {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+.contact{
+display: flex;
+justify-content: center;
+
+}
+}
+/* Эффект мигающего курсора для заголовка */
+.text-caret {
+  display: inline-block;
+  width: 10px;
+  height: 1.2em;
+  background: #00ffff;
+  margin-left: 3px;
+  animation: blink 0.7s steps(1) infinite;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+.text-caret.done {
+  display: none;
+}
+
