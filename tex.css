@@ -137,6 +137,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 10;
+  -webkit-backdrop-filter: blur(6px); /* для Safari на iOS */
 
   /* Пульсирующая нижняя граница */
   border-bottom: 4px solid #00ff99;
