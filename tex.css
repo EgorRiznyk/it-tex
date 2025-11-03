@@ -195,6 +195,13 @@ body { cursor: none; } /* скрываем системный курсор (ск
   justify-content: center;
 }
 
+
+.prog-cursor {
+  z-index: 99999;
+  pointer-events: none;
+}
+
+
 /* обычный режим — маленькие фигурные скобки */
 .prog-cursor--code {
   width: 36px;
@@ -389,3 +396,128 @@ justify-content: center;
 
 
 
+
+body, button, a, input, textarea, label {
+  cursor: none !important;
+}
+
+
+
+.logo {
+  position: relative;
+  display: inline-block;
+}
+
+.logo img {
+  width: 120px;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Анимация "вспышки" при клике */
+.logo img.active {
+  transform: scale(1.15) rotate(6deg);
+  filter: drop-shadow(0 0 15px #00ff99);
+}
+
+/* Частицы */
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #00ff99;
+  pointer-events: none;
+  opacity: 0.8;
+  animation: explode 0.7s ease-out forwards;
+}
+
+/* Анимация разлёта */
+@keyframes explode {
+  from {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translate(var(--x), var(--y)) scale(0.5);
+    opacity: 0;
+  }
+}
+
+
+
+
+
+
+
+.card {
+  background: rgba(0, 255, 150, 0.05);
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid #00ff9d30;
+  box-shadow: 0 0 15px #00ff9d15;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Создаем градиентную подсветку */
+.card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, #00ff99, #28e07f, #00b76b, #00ff99);
+  filter: blur(30px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+/* Hover эффекты */
+.card:hover {
+  transform: translateY(-6px) rotate(-1deg); /* лёгкое колебание */
+  box-shadow: 0 0 30px #00ff9d80, 0 10px 25px rgba(0,255,150,0.2);
+}
+
+/* Показываем градиент при наведении */
+.card:hover::before {
+  opacity: 0.4;
+}
+
+/* Контент всегда поверх градиента */
+.card * {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+
+
+
+/* Энергетические частички */
+.touch-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #00ff99, #28e07f, #00b76b);
+  pointer-events: none;
+  opacity: 0.8;
+  transform: scale(0);
+  animation: particleMove 0.8s forwards;
+}
+
+@keyframes particleMove {
+  0% {
+    transform: translate(0,0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(0);
+    opacity: 0;
+  }
+}

@@ -192,8 +192,8 @@ createMatrix('matrixRight');
 
     const snippets=[
       `// Запуск системы...\nПодключение к серверу...{\n <p>'Привет! Мы-команда программистов';\n\Создаём современные сайты, стильные дизайны и мощные веб-проекты.\n\Стоимость начинается от 100$. Свяжись с нами - и твой проект оживёт.</p>`,
-      `// Стиль через код\nconst theme = {color:'green', glow:true};\nconsole.log('Design power', theme);`,
-      `// Мы любим JavaScript\nlet magic = 'creative code';\nconsole.log('VerdeBoost →', magic);`
+      // `// Стиль через код\nconst theme = {color:'green', glow:true};\nconsole.log('Design power', theme);`,
+      // `// Мы любим JavaScript\nlet magic = 'creative code';\nconsole.log('VerdeBoost →', magic);`
     ];
     let i=0,idx=0,timer=null;
 
@@ -239,3 +239,88 @@ vebBtn.addEventListener('click', () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+const logo = document.querySelector('.logo img');
+
+logo.addEventListener('click', (e) => {
+  // Добавляем класс активного клика
+  logo.classList.add('active');
+  setTimeout(() => logo.classList.remove('active'), 400);
+
+  // Создаём частицы
+  for (let i = 0; i < 15; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+
+    // Случайное направление
+    const angle = Math.random() * 2 * Math.PI;
+    const distance = 40 + Math.random() * 60;
+
+    particle.style.setProperty('--x', `${Math.cos(angle) * distance}px`);
+    particle.style.setProperty('--y', `${Math.sin(angle) * distance}px`);
+
+    // Позиция — центр логотипа
+    const rect = logo.getBoundingClientRect();
+    particle.style.left = rect.width / 2 + 'px';
+    particle.style.top = rect.height / 2 + 'px';
+
+    logo.parentElement.appendChild(particle);
+
+    // Удаляем после анимации
+    setTimeout(() => particle.remove(), 700);
+  }
+
+  // Звук (необязательно, но красиво)
+  const clickSound = new Audio('sounds/energy.mp3');
+  clickSound.volume = 0.3;
+  clickSound.play();
+});
+
+
+
+
+// Функция для создания частиц
+function createParticle(x, y) {
+  const particle = document.createElement('div');
+  particle.className = 'touch-particle';
+  
+  // Рандомное направление движения
+  const dx = (Math.random() - 0.5) * 100 + 'px';
+  const dy = (Math.random() - 0.5) * 100 + 'px';
+  
+  particle.style.left = x + 'px';
+  particle.style.top = y + 'px';
+  particle.style.setProperty('--x', dx);
+  particle.style.setProperty('--y', dy);
+  
+  document.body.appendChild(particle);
+  
+  // Удаляем элемент после анимации
+  setTimeout(() => particle.remove(), 800);
+}
+
+// События для мобильных и ПК
+['click', 'touchstart'].forEach(eventType => {
+  document.addEventListener(eventType, (e) => {
+    let x = e.clientX;
+    let y = e.clientY;
+    if(e.touches && e.touches[0]) {
+      x = e.touches[0].clientX;
+      y = e.touches[0].clientY;
+    }
+
+    // создаем 5-10 частиц за раз
+    for(let i=0; i<8; i++) {
+      createParticle(x, y);
+    }
+  }, {passive: true});
+});
