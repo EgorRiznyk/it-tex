@@ -220,3 +220,22 @@ createMatrix('matrixRight');
 
 
 
+
+
+// Звук печати
+const typeSound = new Audio('sounds/key.mp3'); //mp3 в проект
+playBtn.addEventListener('click', () => {
+  typeSound.currentTime = 0;
+  typeSound.play();
+});
+
+// Вибрация на мобильных при клике кнопки "Написать"
+const vebBtn = document.querySelector('.veb-tel');
+vebBtn.addEventListener('click', () => {
+  if (navigator.vibrate) navigator.vibrate(50); // короткая вибрация
+});
+
+
+
+
+
