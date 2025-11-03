@@ -24,8 +24,8 @@
     // если над интерактивными элементами — прячем курсор (позволяет взаимодействовать)
     const tgt = e.target;
     const tag = tgt.tagName && tgt.tagName.toLowerCase();
-    const interactive = (tag === 'input' || tag === 'textarea' || tgt.isContentEditable || tgt.closest('a, button, label'));
-    if (interactive) cursor.classList.add('hidden'); else cursor.classList.remove('hidden');
+    // const interactive = (tag === 'input' || tag === 'textarea' || tgt.isContentEditable || tgt.closest('a, button, label'));
+    // if (interactive) cursor.classList.add('hidden'); else cursor.classList.remove('hidden');
   }, {passive:true});
 
   // Плавный рендер
@@ -308,19 +308,31 @@ function createParticle(x, y) {
   setTimeout(() => particle.remove(), 800);
 }
 
-// События для мобильных и ПК
-['click', 'touchstart'].forEach(eventType => {
-  document.addEventListener(eventType, (e) => {
-    let x = e.clientX;
-    let y = e.clientY;
-    if(e.touches && e.touches[0]) {
-      x = e.touches[0].clientX;
-      y = e.touches[0].clientY;
-    }
 
-    // создаем 5-10 частиц за раз
-    for(let i=0; i<8; i++) {
-      createParticle(x, y);
-    }
-  }, {passive: true});
+
+let startY = 0;
+let currentY = 0;
+const content = document.querySelectorAll('section, .card');
+
+document.addEventListener('touchstart', e => {
+  startY = e.touches[0].clientY;
+});
+
+document.addEventListener('touchmove', e => {
+  const deltaY = e.touches[0].clientY - startY;
+
+  content.forEach((el, idx) => {
+    // чем дальше вниз, тем меньше смещение (параллакс)
+    const move = deltaY * 0.1 * (idx + 1);
+    el.style.transform = `translateY(${move}px)`;
+  });
+});
+
+document.addEventListener('touchend', () => {
+  content.forEach(el => {
+    // плавно возвращаем элементы на место
+    el.style.transition = 'transform 0.3s ease-out';
+    el.style.transform = 'translateY(0)';
+    setTimeout(() => el.style.transition = '', 300);
+  });
 });
