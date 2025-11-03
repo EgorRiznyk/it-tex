@@ -40,4 +40,4 @@ IT-Technology — это веб-сайт команды разработчико
 
 1. Склонируйте репозиторий:
 ```bash
-git clone https://github.com/egorriznyk/it-technology.git
+git clone https://egorriznyk.github.io/it-tex/
