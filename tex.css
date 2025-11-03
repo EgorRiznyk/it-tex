@@ -402,13 +402,14 @@ body, button, a {
   body {
     overflow-x: hidden; /* запрещаем горизонтальный скролл */
   }
-
   main {
     width: 100%;
     padding: 20px;
     gap: 30px;
   }
-
+.logo img{
+  width: 100px !important;
+}
 
 
   .grid {
