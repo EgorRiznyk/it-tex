@@ -310,29 +310,9 @@ function createParticle(x, y) {
 
 
 
-let startY = 0;
-let currentY = 0;
-const content = document.querySelectorAll('section, .card');
 
-document.addEventListener('touchstart', e => {
-  startY = e.touches[0].clientY;
-});
 
-document.addEventListener('touchmove', e => {
-  const deltaY = e.touches[0].clientY - startY;
 
-  content.forEach((el, idx) => {
-    // чем дальше вниз, тем меньше смещение (параллакс)
-    const move = deltaY * 0.1 * (idx + 1);
-    el.style.transform = `translateY(${move}px)`;
-  });
-});
 
-document.addEventListener('touchend', () => {
-  content.forEach(el => {
-    // плавно возвращаем элементы на место
-    el.style.transition = 'transform 0.3s ease-out';
-    el.style.transform = 'translateY(0)';
-    setTimeout(() => el.style.transition = '', 300);
-  });
-});
+
+
